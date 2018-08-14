@@ -1,11 +1,38 @@
-div {
+#global-div {
+	display: flex;
+}
+
+nav {
+	width: 25%; 
+}
+
+nav div {
+	display: flex;
+	border: 1px solid #000;
 	background-color: blue;
-	font-size: 40px;
+	font-size: 20px;
 	color: white;
 	align-content: center; 
+}
+
+#box {
+	padding: 5%;
+	background-color: grey;
+	width: 75%;
+	text-align: center; 
+	color: yellow;
+	font-size: 30px;
+}
+
+#box img {
+	width: 200px;
+	height: 200px;
 }
 
 h1 {
 	color: red;
 	text-align: center; 
+}
+img {
+	width: 100px;
 }
