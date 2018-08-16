@@ -1,17 +1,17 @@
 const myRequest = new Request('clients.json');
+let clientsData = []; 
 
 fetch(myRequest)
 	.then(function (response) {
 		return response.json();
 	})
-	.then(giveDataToHtml)
+	.then(function(data) {
+		clientsData = data;
+		clientsData.forEach(addNewClients);
+	})
 	.catch(function (err) {
 		console.log(err);
 	});
-
-function giveDataToHtml(data) {
-	data.forEach(addNewClients);
-}
 
 function addNewClients(student, index, arr) {
 	const newClient = document.createElement('div');
@@ -28,9 +28,7 @@ function addNewClients(student, index, arr) {
 	menu.appendChild(newClient);
 
 	newClient.addEventListener('click', function() {
- 		
-
-		const fullDiscription = document.getElementById('box');
+ 		const fullDiscription = document.getElementById('box');
 		const temporaryDiv = document.createElement('div');
 		const myEle = document.getElementById("temp");
 		temporaryDiv.setAttribute("id", "temp");
@@ -44,7 +42,6 @@ function addNewClients(student, index, arr) {
 		const contact = document.createElement('p');
 		const address = document.createElement('p');
 		const bigImage = document.createElement('img');
-
 
 		fullDiscription.appendChild(temporaryDiv);
 		temporaryDiv.appendChild(bigImage);
@@ -73,3 +70,18 @@ function addNewClients(student, index, arr) {
 		this.style.background = 'blue';
 	})
 }
+	
+function searchForClient(inputValue, data) {
+	const filtered = data.filter(function(value) {
+		return value.general.firstName === inputValue;
+	});
+	return filtered;
+}
+
+const input = document.getElementById('input');
+input.addEventListener('keypress', function(event) {
+	if (event.which === 13) {
+		const filteredClients =	searchForClient(event.target.value, clientsData);
+		filteredClients.forEach(addNewClients);
+	}
+});
