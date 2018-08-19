@@ -1,4 +1,4 @@
-#global-div {
+#container {
 	display: flex;
 }
 
@@ -13,8 +13,26 @@ input {
 	font-size: 20px;
 }
 
-nav div {
+.new-client {
 	display: flex;
+	flex-direction: row;
+	border: 1px solid #000;
+	background-color: blue;
+	font-size: 20px;
+	color: white;
+	align-content: center; 
+	align-items: center;
+}
+
+.new-client p {
+	flex-grow: 1;
+	text-align: center;
+
+}
+
+#client-container {
+	display: flex;
+	flex-direction: column;
 	border: 1px solid #000;
 	background-color: blue;
 	font-size: 20px;
@@ -22,10 +40,15 @@ nav div {
 	align-content: center; 
 }
 
+nav div:hover {
+	background: grey;
+}
+
 #box {
 	padding: 5%;
 	background-color: grey;
 	width: 75%;
+	height: calc(100vh - 40px);
 	text-align: center; 
 	color: yellow;
 	font-size: 30px;
@@ -37,6 +60,7 @@ nav div {
 }
 
 h1 {
+	height: 40px;
 	color: red;
 	text-align: center; 
 }
